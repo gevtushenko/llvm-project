@@ -20,6 +20,7 @@
 #include "llvm/Support/Debug.h"
 #include "llvm/Support/raw_ostream.h"
 
+#include <iostream>
 #include <algorithm>
 #include <utility>
 
@@ -1560,6 +1561,21 @@ void UnwrappedLineParser::parseStructuralElement(
     break;
   case tok::kw_namespace:
     parseNamespace();
+    return;
+  case tok::kw_template:
+    if (true)
+    {
+      while (FormatTok->Tok.getKind() != tok::greater) {
+        nextToken();
+      }
+      while (FormatTok->Tok.getKind() != tok::kw_struct) {
+        nextToken();
+      }
+      addUnwrappedLine(LineLevel::Keep);
+      ++Line->Level;
+      parseStructuralElement();
+      --Line->Level;
+    }
     return;
   case tok::kw_public:
   case tok::kw_protected:
