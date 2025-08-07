@@ -19,6 +19,7 @@
 #include "MisleadingIdentifier.h"
 #include "MisplacedConstCheck.h"
 #include "NewDeleteOverloadsCheck.h"
+#include "NamespaceQualificationCheck.h"
 #include "NoRecursionCheck.h"
 #include "NonCopyableObjects.h"
 #include "NonPrivateMemberVariablesInClassesCheck.h"
@@ -81,6 +82,8 @@ public:
         "misc-use-anonymous-namespace");
     CheckFactories.registerCheck<UseInternalLinkageCheck>(
         "misc-use-internal-linkage");
+    CheckFactories.registerCheck<NamespaceQualificationCheck>(
+        "misc-namespace-qualification");
   }
 };
 
